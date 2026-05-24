@@ -1,0 +1,4 @@
+[server]
+bind-address    = 0.0.0.0
+init_file       = /startup_script.sql
+user            = mysql

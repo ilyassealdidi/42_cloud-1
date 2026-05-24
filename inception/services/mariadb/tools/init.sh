@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cat << EOF > startup_script.sql
+CREATE USER IF NOT EXISTS '$USERNAME'@'%' IDENTIFIED BY '$PASSWORD';
+GRANT ALL PRIVILEGES ON $DB.* TO '$USERNAME';
+FLUSH PRIVILEGES;
+EOF
+
+exec mariadbd

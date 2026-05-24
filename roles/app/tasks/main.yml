@@ -1,0 +1,21 @@
+- name: Move file
+  ansible.builtin.copy:
+    src: ../../../inception
+    dest: /root
+- name: Generate .env file
+  ansible.builtin.template:
+    src: ../templates/env.j2
+    dest: /root/inception/.env
+- name: Create wordpress data directory
+  ansible.builtin.file:
+    path: /root/inception/data/wordpress
+    state: directory
+    mode: '0755'
+- name: Create mariadb data directory
+  ansible.builtin.file:
+    path: /root/inception/data/mariadb
+    state: directory
+    mode: '0755'
+- name: Run application
+  community.docker.docker_compose_v2:
+    project_src: /root/inception

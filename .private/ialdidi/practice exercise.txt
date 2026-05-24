@@ -1,0 +1,7 @@
+Spin up a throwaway DigitalOcean droplet (or even a local VM / container with SSH if you'd rather not spend credits).
+Then write a playbook that does exactly this and nothing more:
+
+1. Updates the apt cache.
+2. Installs a single trivial package — say tree or htop.
+3. Copies one text file from your laptop to the server's home directory.
+4. Uses ufw to allow port 22 and enable the firewall.
