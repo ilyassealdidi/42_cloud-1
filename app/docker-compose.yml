@@ -1,3 +1,5 @@
+name: app
+
 services:
   mariadb:
     image: mariadb:ia
