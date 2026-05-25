@@ -1,3 +1,5 @@
+Watch first: https://www.youtube.com/watch?v=fHO1X93e4WA
+
 Spin up a throwaway DigitalOcean droplet (or even a local VM / container with SSH if you'd rather not spend credits).
 Then write a playbook that does exactly this and nothing more:
 
