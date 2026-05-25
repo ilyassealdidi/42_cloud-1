@@ -2,6 +2,8 @@
   ansible.builtin.copy:
     src: ../../../app
     dest: /root
+  notify:
+    - Restart services
 - name: Generate .env file
   ansible.builtin.template:
     src: ../templates/env.j2
