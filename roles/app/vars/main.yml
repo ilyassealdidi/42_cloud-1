@@ -1,4 +1,4 @@
-inception_vars:
+app_vars:
   user: ialdidi
   domain_name: ialdidi.42.fr
 

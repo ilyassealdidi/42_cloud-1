@@ -99,14 +99,14 @@ volumes:
     name: mariadb
     driver: local
     driver_opts:
-      device: /root/inception/data/mariadb/
+      device: /root/app/data/mariadb/
       o: bind
       type: none
   wordpress_data:
     name: wordpress
     driver: local
     driver_opts:
-      device: /root/inception/data/wordpress/
+      device: /root/app/data/wordpress/
       o: bind
       type: none
 
