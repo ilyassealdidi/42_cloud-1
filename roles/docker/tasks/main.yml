@@ -15,7 +15,7 @@
     mode: '0755'
 - name: Set ansible_architecture
   ansible.builtin.set_fact:
-    docker_arch: "{{ 'arm64' if ansible_facts['architecture'] == 'aarch64' else ansible_facts['architecture']}}"
+    docker_arch: "{{ arch_map[ansible_facts['architecture']] if ansible_facts['architecture'] == 'aarch64' or ansible_facts['architecture'] == 'x86_64' else ansible_facts['architecture']}}"
 - name: Add Docker's Official GPG Key and Add the Docker Repository
   block:
     - name: Add Docker's Official GPG Key
