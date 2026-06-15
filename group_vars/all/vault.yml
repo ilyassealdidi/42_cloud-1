@@ -1,0 +1,16 @@
+# MariaDB
+vault_mysql_password: "zahiri123"
+vault_mysql_root_password: "zahiri123"
+
+# WordPress Admin
+vault_wp_admin_pass: "zahiri123"
+vault_wp_admin_email: "admin@cloud1.local"
+
+# WordPress Regular User
+vault_wp_user_name: "wpuser"
+vault_wp_user_email: "user@cloud1.local"
+vault_wp_user_pass: "zahiri123"
+vault_wp_user_role: "editor"
+
+# MariaDB host (container name)
+vault_mariadb_host: "mariadb"

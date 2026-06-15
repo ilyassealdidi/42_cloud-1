@@ -1,8 +1,8 @@
-- name: My first play
-  hosts: all
+- name: Deploy Inception
+  hosts: cloud
   become: yes
-
   roles:
+    - common
+    - security
     - docker
-    - firewall
     - app

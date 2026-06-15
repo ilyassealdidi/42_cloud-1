@@ -13,11 +13,11 @@ wp config create \
 wp db create --allow-root
 
 wp core install \
-    --url=$DOMAIN_NAME \
-    --title=$TITLE \
-    --admin_user=$ADMIN_NAME \
-    --admin_password=$ADMIN_PASS \
-    --admin_email=$ADMIN_EMAIL --allow-root
+    --url="$DOMAIN_NAME" \
+    --title="$TITLE" \
+    --admin_user="$ADMIN_NAME" \
+    --admin_password="$ADMIN_PASS" \
+    --admin_email="$ADMIN_EMAIL" --allow-root
 
 wp user create $USER_NAME $USER_EMAIL \
     --user_pass=$USER_PASS \

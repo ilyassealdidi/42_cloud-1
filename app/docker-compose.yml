@@ -6,7 +6,8 @@ services:
     build: ./services/mariadb
     container_name: mariadb
     restart: always
-    environment: 
+    env_file: .env
+    environment:
       - USERNAME=$MARIADB_USERNAME
       - PASSWORD=$MARIADB_PASSWORD
       - DB=$MARIADB_DB
@@ -31,6 +32,7 @@ services:
       - "80:80"
     container_name: nginx
     restart: always
+    env_file: .env
     environment:
       - DOMAIN_NAME=$DOMAIN_NAME
     depends_on:
@@ -48,6 +50,7 @@ services:
     build: ./services/wordpress
     container_name: wordpress
     restart: always
+    env_file: .env
     environment:
       - TITLE=$WP_TITLE
       - USER_NAME=$WP_USER_NAME
@@ -78,6 +81,7 @@ services:
     image: phpmyadmin:latest
     container_name: phpmyadmin
     restart: always
+    env_file: .env
     networks:
       - inception-network
     environment:
@@ -99,18 +103,8 @@ configs:
 volumes:
   mariadb_data:
     name: mariadb
-    driver: local
-    driver_opts:
-      device: /root/app/data/mariadb/
-      o: bind
-      type: none
   wordpress_data:
     name: wordpress
-    driver: local
-    driver_opts:
-      device: /root/app/data/wordpress/
-      o: bind
-      type: none
 
 networks:
   inception-network:

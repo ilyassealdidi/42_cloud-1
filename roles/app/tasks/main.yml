@@ -1,23 +1,31 @@
-- name: Move file
-  ansible.builtin.copy:
-    src: ../../../app
-    dest: /root
-  notify:
-    - Restart services
-- name: Generate .env file
-  ansible.builtin.template:
-    src: ../templates/env.j2
-    dest: /root/app/.env
-- name: Create wordpress data directory
-  ansible.builtin.file:
-    path: /root/app/data/wordpress
+- name: Create app directory on server
+  file:
+    path: "{{ app_dir }}"
     state: directory
+    owner: vagrant
+    group: vagrant
     mode: '0755'
-- name: Create mariadb data directory
-  ansible.builtin.file:
-    path: /root/app/data/mariadb
-    state: directory
-    mode: '0755'
-- name: Run application
+
+- name: Copy Inception project files to server
+  copy:
+    src: "{{ playbook_dir }}/app/"
+    dest: "{{ app_dir }}/"
+    owner: vagrant
+    group: vagrant
+    mode: preserve
+  notify: Restart compose stack
+
+- name: Render .env from template
+  template:
+    src: .env.j2
+    dest: "{{ app_dir }}/.env"
+    owner: vagrant
+    group: vagrant
+    mode: '0600'
+  notify: Restart compose stack
+
+- name: Start the Inception stack
   community.docker.docker_compose_v2:
-    project_src: /root/app
+    project_src: "{{ app_dir }}"
+    state: present
+    build: always
